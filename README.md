@@ -1,5 +1,5 @@
 # Deck-of-cards-free-API
-JAVA tests to verify functionality for free (public) API "Deck of cards": https://deckofcardsapi.com/
+Java tests to verify functionality for free (public) API "Deck of cards": https://deckofcardsapi.com/
 
 Covered functionality "Draw a Card" located in endpoint: [Draw a card endpoint](https://deckofcardsapi.com/api/deck/<<deck_id>>/draw/?count=2)
    - where <<deck_id>> should be replaced by valid deck_id; 
@@ -35,3 +35,4 @@ Note: test file **ReturnCardTest** is just small check of return functionality (
 ```
 mvn clean test
 ```
+4. Logs from unit tests are located in /target/surefire-reports/
