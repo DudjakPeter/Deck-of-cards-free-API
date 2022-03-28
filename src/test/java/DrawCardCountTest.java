@@ -51,4 +51,27 @@ public class DrawCardCountTest extends BeforeAfter {
                 .get("/new/draw/")
                 .then().assertThat().statusCode(500);
     }
+
+    @Test
+    @Tag("Regression")
+    @DisplayName("Send valid request to API with missing parameter count")
+    public void count_missing_value_and_return200_and_verify_parameters() {
+        RestAssured
+                .get("/new/draw/")
+                .then().assertThat().statusCode(200).
+                body("success", Matchers.equalTo(true)).
+                body("deck_id", Matchers.anything()).
+                body("cards.code", Matchers.anything()).
+                body("remaining", Matchers.equalTo(51));
+    }
+
+    @Test
+    @Tag("Regression")
+    @DisplayName("Send valid request to API with empty value for parameter count and verify 500 error code")
+    public void count_empty_value_and_return500_error() {
+        RestAssured
+                .given().queryParam("count")
+                .get("/new/draw/")
+                .then().assertThat().statusCode(500);
+    }
 }
