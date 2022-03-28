@@ -24,4 +24,16 @@ public class DrawCardDeckIdTest extends BeforeAfter {
                 body("error", Matchers.equalTo("Deck ID does not exist."));
     }
 
+    @Test
+    @Tag("Regression")
+    @DisplayName("Send valid request to API with missing deck id and returns error message")
+    public void deck_is_missing_and_return404_error() {
+        RestAssured
+                .given().queryParam("count", 2)
+                .get("/draw/")
+                .then().assertThat().statusCode(404).
+                body("success", Matchers.equalTo(false)).
+                body("error", Matchers.equalTo("Deck ID does not exist."));
+    }
+
 }
